@@ -1,0 +1,43 @@
+<ion-content class="ion-padding">
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <ion-input
+      formControlName="email"
+      label="Correo electrónico"
+      label-placement="floating"
+      fill="outline"
+      placeholder="Ingresa tu correo"
+      type="email">
+    </ion-input>
+    <ion-note color="danger" *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
+      El correo es requerido
+    </ion-note>
+
+    <ion-input
+      formControlName="password"
+      label="Contraseña"
+      label-placement="floating"
+      fill="outline"
+      placeholder="Ingresa tu contraseña"
+      type="password">
+    </ion-input>
+    <ion-note color="danger" *ngIf="form.get('password')?.touched && form.get('password')?.invalid">
+      La contraseña es requerida
+    </ion-note>
+
+    <ion-button expand="block" type="submit" [disabled]="form.invalid">
+      Iniciar Sesión
+    </ion-button>
+
+    <ion-button expand="block" fill="clear" color="medium" (click)="onLoginWithGoogle()">
+      Iniciar con Google
+    </ion-button>
+
+  </form>
+
+  <ion-button color="light" class="ion-text-center" expand="block" (click)="onRegister()">
+    <p>¿No tienes cuenta? <span style="color: var(--ion-color-primary);">Regístrate</span></p>
+  </ion-button>
+
+</ion-content>
